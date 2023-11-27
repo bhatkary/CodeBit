@@ -25,7 +25,6 @@ const Hero = () => {
     "C#",
     "JavaScript",
     "TypeScript",
-    "TypeScript",
     "PHP",
     "Swift",
     "Go",
