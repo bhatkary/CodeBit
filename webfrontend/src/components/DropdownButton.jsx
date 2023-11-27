@@ -1,6 +1,7 @@
+// DropdownButton.js
 import React, { useState, useRef, useEffect } from "react";
 
-const DropdownButton = ({ options, color }) => {
+const DropdownButton = ({ options, color, onSelectOption }) => {
   const [selectedOption, setSelectedOption] = useState("Convert code to");
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -15,6 +16,11 @@ const DropdownButton = ({ options, color }) => {
     setSelectedOption(`Convert code to ${option}`);
     setDropdownVisible(false);
     setSearchTerm(""); // Clear the search term when an option is selected
+
+    // Call the onSelectOption prop function with the selected option
+    if (onSelectOption) {
+      onSelectOption(option);
+    }
   };
 
   const handleClickOutside = (event) => {

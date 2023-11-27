@@ -1,4 +1,5 @@
-import React from "react";
+// Hero.js
+import React, { useState } from "react";
 import Typed from "react-typed";
 import DropdownButton from "./DropdownButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -34,14 +35,23 @@ const Hero = () => {
     "Scala",
   ];
 
+  const [inputValue, setInputValue] = useState(""); // State to track the input value
+  const [selectedOption, setSelectedOption] = useState(""); // State to track the selected option
+
   const handleRegularButtonClick = () => {
-    // Add the functionality for the regular button click here
-    console.log("Regular button clicked");
+    // Call the function with input value and selected option
+    console.log(
+      "Regular button clicked with input:",
+      inputValue,
+      "and option:",
+      selectedOption
+    );
+
+    // Add your logic here
   };
 
   return (
     <div className="text-white font-sans min-h-screen overflow-hidden mt-0">
-      {/* Adjusted top margin here */}
       <div className="max-w-[800px] w-full mx-auto text-center flex flex-col justify-start">
         <div className="flex items-center">
           <p className="md:text-5xl sm:text-4xl text-xl font-bold">
@@ -64,6 +74,8 @@ const Hero = () => {
               rows="8"
               placeholder="Enter Code"
               style={{ resize: "none" }}
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
             />
           </div>
           <div
@@ -80,7 +92,11 @@ const Hero = () => {
 
         {/* Move the DropdownButton and RegularButton down and change their colors */}
         <div className="mt-2 flex items-center justify-center">
-          <DropdownButton options={dropdownOptions} color="FF5349" />
+          <DropdownButton
+            options={dropdownOptions}
+            color="FF5349"
+            onSelectOption={(option) => setSelectedOption(option)}
+          />
           <RegularButton
             label="Regular Button"
             onClick={handleRegularButtonClick}
