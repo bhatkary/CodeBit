@@ -29,6 +29,12 @@ const DropdownButton = ({ options, color }) => {
     setSearchTerm(newSearchTerm);
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter" && filteredOptions.length > 0) {
+      handleOptionSelect(filteredOptions[0]);
+    }
+  };
+
   const getFilteredOptions = () => {
     if (searchTerm.trim() === "") {
       // If the search term is empty, return all options
@@ -67,12 +73,14 @@ const DropdownButton = ({ options, color }) => {
           style={{
             backgroundColor: `#${color}`,
             right: 0,
+            zIndex: 1000, // Set a higher z-index value
           }}
         >
           <input
             type="text"
             placeholder="Search..."
             onChange={handleSearchChange}
+            onKeyPress={handleKeyPress} // Added onKeyPress event handler
             className="px-4 py-2 border-none focus:outline-none text-gray-700 w-full" // Set text color to dark grey and width to 100%
             ref={searchInputRef}
           />

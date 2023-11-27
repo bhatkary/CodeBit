@@ -10,8 +10,7 @@ const RegularButton = ({ onClick, color }) => (
     style={{ backgroundColor: `#${color}`, color: "#FF5349" }}
     className="py-2 px-4 rounded focus:outline-none flex items-center"
   >
-    <FontAwesomeIcon icon={faPlay} className="text-2xl mt-4 animate-bounce" />{" "}
-    {/* Adjusted text-2xl for larger size */}
+    <FontAwesomeIcon icon={faPlay} className="text-2xl mt-4 animate-bounce" />
   </button>
 );
 
@@ -41,9 +40,10 @@ const Hero = () => {
   };
 
   return (
-    <div className="text-white font-sans">
-      <div className="max-w-[800px] w-full h-screen mx-auto text-center flex flex-col justify-center">
-        <div className="flex items-center mb-4">
+    <div className="text-white font-sans min-h-screen overflow-hidden mt-0">
+      {/* Adjusted top margin here */}
+      <div className="max-w-[800px] w-full mx-auto text-center flex flex-col justify-start">
+        <div className="flex items-center">
           <p className="md:text-5xl sm:text-4xl text-xl font-bold">
             Learning a new language? Migrating a library? Convert any code to
             <Typed
@@ -57,7 +57,7 @@ const Hero = () => {
         </div>
 
         {/* Input and Output Text Boxes with Same Size */}
-        <div className="flex gap-4 mt-8">
+        <div className="flex gap-4 mt-4">
           <div className="w-[45%] border rounded-md overflow-hidden mt-2">
             <textarea
               className="w-full h-full border-none outline-none p-4 text-black text-xl placeholder-text-xl font-sans"
@@ -79,7 +79,7 @@ const Hero = () => {
         </div>
 
         {/* Move the DropdownButton and RegularButton down and change their colors */}
-        <div className="mt-4 flex items-center justify-center">
+        <div className="mt-2 flex items-center justify-center">
           <DropdownButton options={dropdownOptions} color="FF5349" />
           <RegularButton
             label="Regular Button"
